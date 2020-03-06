@@ -5,6 +5,14 @@ VisualStudioVersion = 16.0.29806.167
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DWStar", "DWStar\DWStar.csproj", "{B33B6CE0-DF0C-40BC-86BA-DF6CDBCA5A5C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DWStar.Domain", "DWStar.Domain\DWStar.Domain.csproj", "{D1CABBD5-0CCD-4BFF-8165-4189E60511ED}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DWStar.DataAccess", "DWStar.DataAccess\DWStar.DataAccess.csproj", "{C1685C72-496E-436F-AC7D-AEB9FAD26019}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DWStar.DataAccess.SqlServer", "DWStar.DataAccess.SqlServer\DWStar.DataAccess.SqlServer.csproj", "{61695143-41EE-4BE6-B65C-CC990019DE51}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DWStar.Shared", "DWStar.Shared\DWStar.Shared.csproj", "{07BF6031-900D-4836-BED1-F944536E83B4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +23,22 @@ Global
 		{B33B6CE0-DF0C-40BC-86BA-DF6CDBCA5A5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B33B6CE0-DF0C-40BC-86BA-DF6CDBCA5A5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B33B6CE0-DF0C-40BC-86BA-DF6CDBCA5A5C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D1CABBD5-0CCD-4BFF-8165-4189E60511ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1CABBD5-0CCD-4BFF-8165-4189E60511ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1CABBD5-0CCD-4BFF-8165-4189E60511ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1CABBD5-0CCD-4BFF-8165-4189E60511ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1685C72-496E-436F-AC7D-AEB9FAD26019}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1685C72-496E-436F-AC7D-AEB9FAD26019}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1685C72-496E-436F-AC7D-AEB9FAD26019}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1685C72-496E-436F-AC7D-AEB9FAD26019}.Release|Any CPU.Build.0 = Release|Any CPU
+		{61695143-41EE-4BE6-B65C-CC990019DE51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61695143-41EE-4BE6-B65C-CC990019DE51}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61695143-41EE-4BE6-B65C-CC990019DE51}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61695143-41EE-4BE6-B65C-CC990019DE51}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07BF6031-900D-4836-BED1-F944536E83B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07BF6031-900D-4836-BED1-F944536E83B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07BF6031-900D-4836-BED1-F944536E83B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07BF6031-900D-4836-BED1-F944536E83B4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
