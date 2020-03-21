@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAT10", "DAT10\DAT10.csproj", "{6615D234-A771-4075-86CA-74E78E909EAD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAT10Console", "DAT10Console\DAT10Console.csproj", "{0CD22A29-0E32-4521-B1AF-5FF93C04EFA4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAT10Gui", "DAT10Gui\DAT10Gui.csproj", "{7DCECE82-392B-4769-B1B9-9F32B1EBE977}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6615D234-A771-4075-86CA-74E78E909EAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6615D234-A771-4075-86CA-74E78E909EAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6615D234-A771-4075-86CA-74E78E909EAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6615D234-A771-4075-86CA-74E78E909EAD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0CD22A29-0E32-4521-B1AF-5FF93C04EFA4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0CD22A29-0E32-4521-B1AF-5FF93C04EFA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0CD22A29-0E32-4521-B1AF-5FF93C04EFA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0CD22A29-0E32-4521-B1AF-5FF93C04EFA4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7DCECE82-392B-4769-B1B9-9F32B1EBE977}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7DCECE82-392B-4769-B1B9-9F32B1EBE977}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7DCECE82-392B-4769-B1B9-9F32B1EBE977}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7DCECE82-392B-4769-B1B9-9F32B1EBE977}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

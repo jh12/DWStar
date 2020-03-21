@@ -1,0 +1,167 @@
+﻿<UserControl x:Class="DAT10Gui.View.ConfigurationView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:modules="clr-namespace:DAT10.Modules;assembly=DAT10"
+             xmlns:inference="clr-namespace:DAT10.Modules.Inference;assembly=DAT10"
+             xmlns:refinement="clr-namespace:DAT10.Modules.Refinement;assembly=DAT10"
+             xmlns:viewModel="clr-namespace:DAT10Gui.ViewModel"
+             xmlns:controls="clr-namespace:DAT10Gui.View.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300"
+             TextElement.Foreground="{DynamicResource MaterialDesignLightForeground}"
+             Background="{DynamicResource MaterialDesignPaper}"
+             TextElement.FontWeight="Medium"
+             TextElement.FontSize="14"
+             FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
+             DataContext="{Binding Source={StaticResource Locator}, Path=Configuration}"
+             Padding="5"
+             x:Name="Parent">
+    <UserControl.Resources>
+        <DataTemplate DataType="{x:Type inference:InferenceModuleBase}">
+            <StackPanel>
+                <TextBlock Text="{Binding Name}"/>
+                <TextBlock Text="{Binding Description}"/>
+            </StackPanel>
+        </DataTemplate>
+        <DataTemplate x:Key="RefinementTemplate" DataType="{x:Type refinement:RefinementModuleBase}">
+            <StackPanel>
+                <TextBlock Text="{Binding Name}"/>
+                <TextBlock Text="{Binding Description}"/>
+            </StackPanel>
+        </DataTemplate>
+        <DataTemplate x:Key="IModuleTemplate" DataType="{x:Type modules:IModule}">
+            <StackPanel Margin="0 0 0 5">
+                <TextBlock Text="{Binding Path=(modules:IModule.Name)}" Style="{DynamicResource MaterialDesignSubheadingTextBlock}"/>
+                <TextBlock Text="{Binding  Path=(modules:IModule.Description)}" Style="{DynamicResource MaterialDesignCaptionTextBlock}"/>
+            </StackPanel>
+        </DataTemplate>
+
+        <ResourceDictionary x:Key="Dictionary">
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Button.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.PopupBox.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.TextBlock.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/MaterialDesignColor.Green.Named.Primary.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="4*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="32"/>
+        </Grid.RowDefinitions>
+
+        <GroupBox Grid.Column="0" Grid.Row="0" Style="{DynamicResource MaterialDesignGroupBox}" Margin="5 5 10 5" materialDesign:ColorZoneAssist.Mode="Dark" Padding="2">
+            <GroupBox.HeaderTemplate>
+                <DataTemplate>
+                    <Grid VerticalAlignment="Center">
+                        <TextBlock Padding="9" Foreground="{DynamicResource MaterialDesignDarkForeground}">Configurations</TextBlock>
+                        <Button Height="25" Width="25" HorizontalAlignment="Right"
+                                        ToolTip="New configuration"
+                                        Style="{DynamicResource MaterialDesignFloatingActionMiniAccentButton}" 
+                                        Command="{Binding DataContext.CreateConfiguration, ElementName=Parent}" >
+                            <materialDesign:PackIcon Kind="Plus"/>
+                        </Button>
+                    </Grid>
+                </DataTemplate>
+            </GroupBox.HeaderTemplate>
+            <ScrollViewer VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Auto">
+                <ListBox ItemsSource="{Binding Configurations}" SelectedItem="{Binding CurrConfiguration}" SelectionMode="Single" HorizontalContentAlignment="Stretch">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition Width="20"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Text="{Binding Name}" Grid.Column="0"/>
+                            </Grid>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </ScrollViewer>
+        </GroupBox>
+
+        <ScrollViewer Grid.Row="0" Grid.Column="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" PreviewMouseWheel="ScrollViewer_PreviewMouseWheel">
+            <ItemsControl ItemsSource="{Binding Categories}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <GroupBox Style="{DynamicResource MaterialDesignCardGroupBox}" Margin="5" Width="250">
+                            <GroupBox.HeaderTemplate>
+                                <DataTemplate>
+                                    <Grid VerticalAlignment="Center">
+                                        <TextBlock VerticalAlignment="Center" Text="{Binding DataContext.Name, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type GroupBox}}}"/>
+                                        <Button Height="25" Width="25" HorizontalAlignment="Right"
+                                        ToolTip="Edit"
+                                        Style="{DynamicResource MaterialDesignFloatingActionMiniAccentButton}" 
+                                        Click="OnConfigurationCategoryClick" DataContext="{Binding DataContext, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type GroupBox}}}">
+                                            <materialDesign:PackIcon Kind="Pencil"/>
+                                        </Button>
+                                    </Grid>
+                                </DataTemplate>
+                            </GroupBox.HeaderTemplate>
+                            <ItemsControl ItemsSource="{Binding SelectedModules}" ItemTemplate="{StaticResource IModuleTemplate}"/>
+                        </GroupBox>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+
+        <StackPanel Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Command="{Binding SaveConfiguration}">
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="ContentSave"/>
+                    <TextBlock>Save configuration</TextBlock>
+                </StackPanel>
+            </Button>
+        </StackPanel>
+
+        <materialDesign:DialogHost Visibility="Collapsed">
+            <materialDesign:DialogHost.Content>
+                <Grid Name="ConfigurationDialogContent">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <ContentControl Name="ConfigurationDialogContentControl" Grid.Row="0">
+                        <ContentControl.Resources>
+                            <DataTemplate DataType="{x:Type viewModel:ConfigurationCategory}">
+                                <controls:OrderedSelectionList 
+                                    Collection="{Binding AvailableModules}"
+                                    Selection="{Binding SelectedModules}"
+                                    Ordering="{Binding Ordering}"/>
+                            </DataTemplate>
+                            <DataTemplate DataType="{x:Type viewModel:LimitedConfigurationCategory}">
+                                <controls:OrderedSelectionList 
+                                    Collection="{Binding AvailableModules}"
+                                    Selection="{Binding SelectedModules}"
+                                    MaxSelectedElements="{Binding Limit}"
+                                    Ordering="{Binding Ordering}"/>
+                            </DataTemplate>
+                        </ContentControl.Resources>
+                    </ContentControl>
+                    
+                    <Button Grid.Row="1" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" HorizontalAlignment="Right" Margin="5">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Close"/>
+                            <TextBlock>Close</TextBlock>
+                        </StackPanel>
+                    </Button>
+                </Grid>
+            </materialDesign:DialogHost.Content>
+        </materialDesign:DialogHost>
+    </Grid>
+</UserControl>

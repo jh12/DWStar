@@ -1,0 +1,104 @@
+﻿<controls:MetroWindow x:Class="DAT10Gui.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DAT10Gui"
+        xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:viewModel="clr-namespace:DAT10Gui.ViewModel"
+        xmlns:view="clr-namespace:DAT10Gui.View"
+        mc:Ignorable="d"
+        Title="DAT 10" Height="600" Width="800"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        Background="{DynamicResource MaterialDesignPaper}"
+        TextElement.FontWeight="Medium"
+        TextElement.FontSize="14"
+        FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
+        DataContext="{Binding Source={StaticResource Locator}, Path=Main}"
+        >
+    <!--<controls:MetroWindow.RightWindowCommands>
+        <controls:WindowCommands>
+            <StackPanel Orientation="Horizontal">
+                <Label Foreground="{DynamicResource PrimaryHueDarkForegroundBrush}">Simplified</Label>
+                <CheckBox Style="{DynamicResource MaterialDesignActionAccentCheckBox}">
+                    <CheckBox.Content>
+                        <materialDesign:PackIcon Kind="Check"/>
+                    </CheckBox.Content>
+                    <materialDesign:ToggleButtonAssist.OnContent>
+                        <materialDesign:PackIcon Kind="Close"/>
+                    </materialDesign:ToggleButtonAssist.OnContent>
+                </CheckBox>
+            </StackPanel>
+        </controls:WindowCommands>
+    </controls:MetroWindow.RightWindowCommands>-->
+
+    <!--Resources-->
+    <controls:MetroWindow.Resources>
+        <DataTemplate DataType="{x:Type viewModel:HomeViewModel}">
+            <view:HomeView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModel:ConnectionViewModel}">
+            <view:ConnectionView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModel:ExecutionViewModel}">
+            <view:ExecutionView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModel:ConfigurationViewModel}">
+            <view:ConfigurationView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModel:LogViewModel}">
+            <view:LogView/>
+        </DataTemplate>
+
+        <!--HamburgerMenuItem-->
+        <DataTemplate x:Key="MenuItemTemplate" DataType="{x:Type controls:HamburgerMenuGlyphItem}">
+            <Grid Height="48">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="48"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <materialDesign:PackIcon Kind="{Binding Glyph}" Grid.Column="0" Height="28" Width="28" Margin="10" Foreground="{DynamicResource PrimaryHueDarkForegroundBrush}" ToolTip="{Binding Label}"/>
+                <TextBlock Text="{Binding Label}" Margin="5 0 0 0" Grid.Column="1" FontSize="16" VerticalAlignment="Center" Style="{StaticResource MaterialDesignCaptionTextBlock}" Foreground="{DynamicResource PrimaryHueDarkForegroundBrush}"/>
+            </Grid>
+        </DataTemplate>
+    </controls:MetroWindow.Resources>
+
+    <materialDesign:DialogHost Identifier="RootDialog" CloseOnClickAway="True" SnackbarMessageQueue="{Binding SnackbarMessageQueue, ElementName=SnackBar}">
+        <Grid>
+            <!--Content-->
+            <!--TODO: Change style of hamburger button?-->
+            <controls:HamburgerMenu HamburgerWidth="48"
+                                    OpenPaneLength="168"
+                                    DisplayMode="CompactInline"
+                                    ItemsSource="{Binding MenuItems}"
+                                    ItemTemplate="{StaticResource MenuItemTemplate}"
+                                    ItemClick="HamburgerMenu_OnItemClick"
+                                    SelectedIndex="{Binding SelectedIndex}"
+                                    PaneBackground="{DynamicResource MaterialDesignBody}"
+                                    Background="{DynamicResource MaterialDesignBody}"
+                                Name="HamburgerMenu">
+                <controls:HamburgerMenu.ContentTemplate>
+                    <DataTemplate>
+                        <controls:TransitioningContentControl
+                            DataContext="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorLevel=1, AncestorType={x:Type controls:MetroWindow}}, Path=DataContext}"
+                            RestartTransitionOnContentChange="True"
+                            Transition="Default"
+                            Content="{Binding CurrViewModel}">
+                            <controls:TransitioningContentControl.ContentTemplate>
+                                <DataTemplate>
+                                    <ScrollViewer VerticalScrollBarVisibility="Auto"
+                                                  HorizontalScrollBarVisibility="Disabled">
+                                        <ContentControl Content="{Binding}" Padding="10"></ContentControl>
+                                    </ScrollViewer>
+                                </DataTemplate>
+                            </controls:TransitioningContentControl.ContentTemplate>
+                        </controls:TransitioningContentControl>
+                    </DataTemplate>
+                </controls:HamburgerMenu.ContentTemplate>
+            </controls:HamburgerMenu>
+            <materialDesign:Snackbar x:Name="SnackBar" MessageQueue="{Binding SnackbarMessageQueue}" />
+        </Grid>
+    </materialDesign:DialogHost>
+</controls:MetroWindow>

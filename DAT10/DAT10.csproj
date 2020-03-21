@@ -1,0 +1,195 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6615D234-A771-4075-86CA-74E78E909EAD}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DAT10</RootNamespace>
+    <AssemblyName>DAT10</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.SqlServer.ConnectionInfo, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.SqlServer.Management.Sdk.Sfc, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.SqlServer.Smo, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.SqlServer.SqlEnum, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="QuickGraph, Version=3.6.61114.0, Culture=neutral, PublicKeyToken=f3fb40175eec2af3, processorArchitecture=MSIL">
+      <HintPath>..\packages\QuickGraph.3.6.61119.7\lib\net4\QuickGraph.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="QuickGraph.Data, Version=3.6.61114.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\QuickGraph.3.6.61119.7\lib\net4\QuickGraph.Data.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="QuickGraph.Graphviz, Version=3.6.61114.0, Culture=neutral, PublicKeyToken=f3fb40175eec2af3, processorArchitecture=MSIL">
+      <HintPath>..\packages\QuickGraph.3.6.61119.7\lib\net4\QuickGraph.Graphviz.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="QuickGraph.Serialization, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\QuickGraph.3.6.61119.7\lib\net4\QuickGraph.Serialization.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SimpleInjector, Version=3.3.2.0, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL">
+      <HintPath>..\packages\SimpleInjector.3.3.2\lib\net45\SimpleInjector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SimpleLogger, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SimpleLogger.1.0.0\lib\net40\SimpleLogger.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity.Design" />
+    <Reference Include="System.Reactive.Core, Version=3.0.1000.0, Culture=neutral, PublicKeyToken=94bc3704cddfc263, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Reactive.Core.3.1.1\lib\net45\System.Reactive.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Reactive.Interfaces, Version=3.0.1000.0, Culture=neutral, PublicKeyToken=94bc3704cddfc263, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Reactive.Interfaces.3.1.1\lib\net45\System.Reactive.Interfaces.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Reactive.Linq, Version=3.0.1000.0, Culture=neutral, PublicKeyToken=94bc3704cddfc263, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Reactive.Linq.3.1.1\lib\net45\System.Reactive.Linq.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Reactive.PlatformServices, Version=3.0.1000.0, Culture=neutral, PublicKeyToken=94bc3704cddfc263, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Reactive.PlatformServices.3.1.1\lib\net45\System.Reactive.PlatformServices.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Reactive.Windows.Threading, Version=3.0.1000.0, Culture=neutral, PublicKeyToken=94bc3704cddfc263, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Reactive.Windows.Threading.3.1.1\lib\net45\System.Reactive.Windows.Threading.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Windows" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Core\DependencyGraph.cs" />
+    <Compile Include="Core\GenericGraph\UnDirectedGraph.cs" />
+    <Compile Include="Core\GenericGraph\GenericEdge.cs" />
+    <Compile Include="Core\GenericGraph\GenericNode.cs" />
+    <Compile Include="Core\ModuleLoader.cs" />
+    <Compile Include="Core\SettingsService.cs" />
+    <Compile Include="Core\Setting\Configuration.cs" />
+    <Compile Include="Core\ModuleEngine.cs" />
+    <Compile Include="Core\Setting\ConfigurationManager.cs" />
+    <Compile Include="Core\Setting\ConnectionInfo.cs" />
+    <Compile Include="Core\Setting\CoreSettings.cs" />
+    <Compile Include="Core\Setting\ModuleTypeConverter.cs" />
+    <Compile Include="Metadata\Model\Column.cs" />
+    <Compile Include="Metadata\Model\CombinedTable.cs" />
+    <Compile Include="Metadata\Model\CommonModel.cs" />
+    <Compile Include="Metadata\Model\Constraints.cs" />
+    <Compile Include="Metadata\Model\Database.cs" />
+    <Compile Include="Metadata\Model\DataType.cs" />
+    <Compile Include="Metadata\Model\DataTypeHierarchy.cs" />
+    <Compile Include="Metadata\Model\Relation.cs" />
+    <Compile Include="Metadata\Model\Table.cs" />
+    <Compile Include="Modules\CombinationPhase\CombineTables.cs" />
+    <Compile Include="Modules\CombinationPhase\ICombinationModule.cs" />
+    <Compile Include="Modules\Generation\ETLScriptGenerator.cs" />
+    <Compile Include="Modules\Generation\IGeneration.cs" />
+    <Compile Include="Modules\Generation\SqlScriptGenerator.cs" />
+    <Compile Include="Modules\Generation\AliasService.cs" />
+    <Compile Include="Modules\IDependent.cs" />
+    <Compile Include="Modules\IModule.cs" />
+    <Compile Include="Modules\Inference\DataSampleService.cs" />
+    <Compile Include="Modules\Inference\FlatFiles\CSVFileConfiguration.cs" />
+    <Compile Include="Modules\Inference\FlatFiles\CSVFileInference.cs" />
+    <Compile Include="Modules\Inference\InferenceModuleBase.cs" />
+    <Compile Include="Modules\Inference\RDBMS\SqlServerInference.cs" />
+    <Compile Include="Modules\Inference\RDBMS\SqlServerInferenceConfiguration.cs" />
+    <Compile Include="Modules\Dimensions\FlattenDimensions.cs" />
+    <Compile Include="Modules\Dimensions\DimensionalModuleBase.cs" />
+    <Compile Include="Modules\Dimensions\IsMeasure.cs" />
+    <Compile Include="Modules\Dimensions\StarDependency.cs" />
+    <Compile Include="Modules\Multidimensional\FactTableHasNumerics.cs" />
+    <Compile Include="Modules\Multidimensional\FactTableLarger.cs" />
+    <Compile Include="Modules\Multidimensional\FactTableManyToOne.cs" />
+    <Compile Include="Modules\Multidimensional\IMultidimModuleFact.cs" />
+    <Compile Include="Modules\Refinement\ColumnName\PatternMatchName.cs" />
+    <Compile Include="Modules\Refinement\ColumnName\PatternMatchNamesConfiguration.cs" />
+    <Compile Include="Modules\Refinement\CommonDependency.cs" />
+    <Compile Include="Modules\Refinement\Constraints\NonNullabilityModule.cs" />
+    <Compile Include="Modules\Refinement\Constraints\DistinctPrimaryKeys.cs" />
+    <Compile Include="Modules\Refinement\Constraints\UniqueModule.cs" />
+    <Compile Include="Modules\Refinement\Datatypes\ZipCodeIdentification.cs" />
+    <Compile Include="Modules\Refinement\DBpedia\DBpedia.cs" />
+    <Compile Include="Modules\Refinement\DBpedia\DBpediaConfiguration.cs" />
+    <Compile Include="Modules\Refinement\RefinementModuleBase.cs" />
+    <Compile Include="Modules\Refinement\Relations\CardinalityModule.cs" />
+    <Compile Include="Modules\Refinement\Relations\CSVRelations.cs" />
+    <Compile Include="Modules\StarRefinement\DataTypes\ExtendDatatypeLength.cs" />
+    <Compile Include="Modules\StarRefinement\JunkDimensions\AddJunkDimension.cs" />
+    <Compile Include="Modules\StarRefinement\FactRelations\FactRelationColumns.cs" />
+    <Compile Include="Modules\StarRefinement\ForeignKeys\RemoveOldForeignKeys.cs" />
+    <Compile Include="Modules\StarRefinement\IStarRefinement.cs" />
+    <Compile Include="Modules\StarRefinement\Naming\NamingConvention.cs" />
+    <Compile Include="Modules\StarRefinement\Naming\NamingConventionConfiguration.cs" />
+    <Compile Include="Modules\StarRefinement\OrderColumns\OrderColumns.cs" />
+    <Compile Include="Modules\StarRefinement\SurrogateKeys\SurrogateKeyCreator.cs" />
+    <Compile Include="Modules\StarRefinement\TimeDimensions\AddTimeDimension.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StarModelComponents\Dimensions\DateDimension.cs" />
+    <Compile Include="StarModelComponents\Dimensions\Dimension.cs" />
+    <Compile Include="StarModelComponents\FactTable.cs" />
+    <Compile Include="StarModelComponents\Dimensions\JunkDimension.cs" />
+    <Compile Include="StarModelComponents\JunkColumn.cs" />
+    <Compile Include="StarModelComponents\StarColumn.cs" />
+    <Compile Include="StarModelComponents\StarColumnType.cs" />
+    <Compile Include="StarModelComponents\StarConstraint.cs" />
+    <Compile Include="StarModelComponents\StarModel.cs" />
+    <Compile Include="StarModelComponents\StarModelTableBase.cs" />
+    <Compile Include="StarModelComponents\StarRelation.cs" />
+    <Compile Include="StarModelComponents\Dimensions\TimeDimension.cs" />
+    <Compile Include="Utils\ColumnExtensions.cs" />
+    <Compile Include="Utils\DeepCopyExtension.cs" />
+    <Compile Include="Utils\DimensionExtensions.cs" />
+    <Compile Include="Utils\Enums.cs" />
+    <Compile Include="Utils\StringExtensions.cs" />
+    <Compile Include="Utils\TableExtensions.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
